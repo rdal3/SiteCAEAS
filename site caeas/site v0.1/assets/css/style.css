@@ -1,0 +1,957 @@
+/* Importar fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Variáveis CSS para cores e tamanhos */
+:root {
+    --primary-green: #339438;
+    --light-green-bg: #EAF7EA;
+    --dark-green-bg: #1A5232;
+    --accent-blue-green: #1672BB;
+    /* ALTERADO: Cor do texto mais escura para maior contraste */
+    --text-color: #202020;
+    --secondary-text-color: #6C6C6C;
+    --footer-bg: #2A2A2A;
+    --footer-text-color: #F0F0F0;
+    --header-bg: #2A2A2A;
+    --header-text: #FFFFFF;
+    --border-radius: 12px; /* Aumentado para bordas mais suaves */
+    --box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Sombra mais moderna */
+}
+
+/* Reset básico e estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7; /* Aumentado para melhor legibilidade */
+    color: var(--text-color);
+    
+    background-image: linear-gradient(170deg, rgba(248, 249, 250, 0.7), rgba(234, 247, 234, 0.7)), url('../img/background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos do Cabeçalho */
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: sticky; /* Adicionado para o cabeçalho fixo */
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Estilo para a imagem do logo no cabeçalho */
+.logo-img img {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover img {
+    transform: scale(1.05);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 30px;
+}
+
+header nav ul li a {
+    color: var(--header-text);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px; /* Espaço para a linha */
+}
+
+/* NOVO: Efeito de hover para links de navegação */
+header nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--primary-green);
+    transition: width .3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+header nav ul li a:hover::after {
+    width: 100%;
+}
+
+header nav ul li a:hover {
+    color: var(--primary-green);
+}
+
+.search-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--header-text);
+    transition: color 0.3s ease;
+}
+
+.search-icon:hover {
+    color: var(--primary-green);
+}
+
+/* Conteúdo Principal */
+main {
+    flex: 1;
+}
+
+/* NOVO: Sombra de texto para melhorar a legibilidade sobre o fundo */
+.caeas-description p,
+.about-text p,
+.news-content .news-text p,
+.members-select-container p {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Seção Hero (Página Inicial) */
+.hero-section {
+    width: 100%;
+}
+
+.hero-top {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/2021-09-20-08-28-42.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+}
+
+.hero-bottom {
+    background: transparent; /* Removido para usar o gradiente do body */
+    padding: 70px 0;
+    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.caeas-logo img {
+    max-width: 180px;
+    height: auto;
+}
+
+.caeas-description {
+    max-width: 600px;
+    text-align: left;
+}
+
+.caeas-description h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--dark-green-bg);
+}
+
+.caeas-description p {
+    font-size: 1.15em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+/* Botões Gerais */
+.btn-primary, .btn-secondary, .btn-product, .btn-subtle-primary, .btn-subtle-secondary {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px; /* Ajustado */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-primary, .btn-product, .btn-subtle-primary {
+    background-color: var(--primary-green);
+    color: #fff;
+    border-color: var(--primary-green);
+}
+
+.btn-secondary, .btn-subtle-secondary {
+    background-color: transparent;
+    color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+/* NOVO: Efeito de hover melhorado para botões */
+.btn-primary:hover, .btn-secondary:hover, .btn-product:hover, .btn-subtle-primary:hover, .btn-subtle-secondary:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.btn-secondary:hover, .btn-subtle-secondary:hover {
+    background-color: var(--primary-green);
+    color: #fff;
+}
+
+/* Seções da Página Inicial (Sobre, Equipa, Projetos) */
+.section-padding {
+    padding: 80px 20px; /* Aumentado padding */
+    background-color: transparent; /* Fundo transparente para mostrar o gradiente do body */
+    margin-bottom: 30px;
+}
+
+/* NOVO: Título de seção modernizado */
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    color: var(--dark-green-bg);
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+
+/* Secção Sobre o CAEAS */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.about-text {
+    max-width: 700px;
+    text-align: left;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+
+/* Secção Nossa Equipa (com rolagem horizontal) */
+/* ALTERADO: Seção centralizada e com padding */
+.team-section {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 60px 0;
+    background-color: transparent;
+    position: relative;
+}
+
+/* NOVO: Efeito de fade nas laterais do carrossel */
+.member-carousel-wrapper {
+    position: relative;
+}
+.member-carousel-wrapper::before,
+.member-carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 20px; /* Evita cobrir a barra de rolagem se visível */
+    width: 75px; /* Largura do gradiente de fade */
+    z-index: 2; /* Garante que fique acima dos cards mas abaixo das setas */
+    pointer-events: none; /* Permite clicar nos cards através do gradiente */
+}
+.member-carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0));
+}
+.member-carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(234, 247, 234, 0.9), rgba(234, 247, 234, 0));
+}
+
+.member-carousel-container {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding-bottom: 20px;
+}
+
+.member-carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.member-carousel {
+    display: flex;
+    gap: 25px;
+    padding: 0 40px; /* Mais padding para o efeito de fade funcionar bem */
+    white-space: nowrap;
+    justify-content: flex-start;
+}
+
+/* NOVO: Efeito "vidro fosco" para os cards de membro */
+.member-card {
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.member-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12); /* Sombra mais forte no hover */
+}
+
+.member-card img {
+    max-width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid var(--primary-green);
+}
+
+/* ALTERADO: Ajustes para o texto do cargo caber na caixa */
+.member-card .role {
+    font-weight: bold;
+    font-size: 0.85em; /* Reduzido para caber melhor */
+    color: var(--primary-green);
+    margin-bottom: 8px;
+    min-height: 2.5em; /* Garante altura consistente para 1 ou 2 linhas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-card .name {
+    font-size: 0.8em; /* Reduzido para consistência */
+    white-space: normal;
+}
+
+/* Estilos para as setas de navegação do carrossel */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 50%; /* Setas redondas */
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    z-index: 3; /* Acima do fade */
+    opacity: 0.7;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+}
+
+.carousel-arrow.left {
+    left: 10px;
+}
+
+.carousel-arrow.right {
+    right: 10px;
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+
+/* Secção Projetos e Atividades */
+.projects-activities-section {
+    padding: 60px 20px;
+    background-color: transparent;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    text-align: center;
+}
+
+.project-item {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.5); /* Efeito vidro */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 200px;
+    text-align: center;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.project-item i {
+    font-size: 3em;
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+/* ALTERADO: Tamanho da fonte reduzido para caber na caixa */
+.project-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    color: var(--dark-green-bg);
+    line-height: 1.3;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-width: 100%;
+}
+
+/* Elemento Divisor de Secção */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px auto; /* Aumentado espaçamento */
+    width: 80%;
+    max-width: 800px;
+}
+
+.section-divider-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--secondary-text-color);
+    opacity: 0.3;
+}
+
+.section-divider-icon {
+    margin: 0 20px;
+    color: var(--primary-green);
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Página de Notícias */
+.news-page {
+    padding: 50px 0;
+}
+
+.news-container {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+.news-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    color: var(--dark-green-bg);
+    margin-bottom: 15px;
+}
+
+.news-header .edit-date {
+    font-size: 1em;
+    color: var(--secondary-text-color);
+    margin-bottom: 40px;
+}
+
+.news-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.news-content .news-text {
+    max-width: 700px;
+    text-align: left;
+}
+
+.news-content .news-text p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+.news-link {
+    color: var(--primary-green);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.news-link:hover {
+    color: var(--dark-green-bg);
+    text-decoration: underline;
+}
+
+.news-content .news-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.original-link {
+    display: block;
+    margin-top: 30px;
+    color: var(--secondary-text-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.original-link:hover {
+    color: var(--primary-green);
+}
+
+/* Página da Loja */
+.shop-page {
+    padding-bottom: 50px;
+}
+
+.shop-products {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+/* NOVO: Efeito "vidro fosco" para os produtos */
+.product-item {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.product-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.product-item img {
+    max-width: 100%;
+    height: 220px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+}
+
+.product-item p {
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+/* Página de Seleção de Membros */
+.members-select-page {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.members-select-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    color: var(--dark-green-bg);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.members-select-container p {
+    font-size: 1.15em;
+    margin-bottom: 50px;
+    color: var(--text-color);
+}
+
+.year-selection-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.year-card {
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    color: var(--header-text);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.year-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.year-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.year-card:hover img {
+    transform: scale(1.1); /* Efeito de zoom na imagem */
+}
+
+.year-card .year-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); /* Gradiente mais bonito */
+}
+
+.year-card .year-overlay p {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--header-text);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra no texto */
+}
+
+.year-card .year-overlay .year-text {
+    font-size: 2.8em;
+    margin-top: 5px;
+}
+
+/* Páginas de Detalhes dos Membros (2023, 2022, 2021) */
+.members-page {
+    padding-bottom: 50px;
+}
+
+.group-photo img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 50px;
+}
+
+.members-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    color: var(--dark-green-bg);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    padding: 50px 0; /* Aumentado padding */
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 40px;
+}
+
+.footer-logo, .address, .social-media, .powered-by {
+    flex: 1;
+    min-width: 200px; /* Garante que não fiquem muito espremidos */
+}
+
+.footer-logo {
+    text-align: left;
+}
+
+.footer-logo img {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    line-height: 1.4;
+    font-size: 0.9em;
+}
+
+.social-media p {
+    margin-bottom: 15px; /* Aumentado */
+    font-weight: bold;
+    font-size: 1.1em; /* Aumentado */
+}
+
+.social-icons a {
+    color: var(--footer-text-color);
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-green);
+    transform: scale(1.2); /* Efeito de crescimento */
+}
+
+.address {
+    text-align: left;
+    max-width: 300px;
+}
+
+.address p {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.powered-by {
+    text-align: center;
+}
+
+.powered-by p {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+/* NOVO: Estilo para o link de atribuição */
+.attribution-link {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.8em;
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.attribution-link a {
+    color: inherit; /* Herda a cor do pai (.attribution-link) */
+    text-decoration: none;
+}
+
+.attribution-link:hover {
+    color: var(--footer-text-color);
+}
+
+
+/* NOVO: Animação de Fade-in para secções */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Ajustes Responsivos */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    header nav ul li {
+        margin: 0 15px 10px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .caeas-description {
+        text-align: center;
+    }
+
+    .news-content {
+        flex-direction: column-reverse;
+    }
+
+    .year-selection-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .footer-logo, .address {
+        text-align: center;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .carousel-arrow {
+        padding: 10px 5px;
+        font-size: 1.2em;
+    }
+    
+    .section-title {
+        font-size: 2.2em; /* Títulos menores em mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 24px;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+    }
+
+    .caeas-description h1 {
+        font-size: 2em;
+    }
+
+    .caeas-description p {
+        font-size: 1em;
+    }
+
+    .member-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .year-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .news-container {
+        padding: 30px;
+    }
+
+    .product-item {
+        max-width: 100%;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+}
